@@ -36,6 +36,7 @@ public class Tempview extends AppCompatActivity {
     private final Handler mHandler = new Handler();
     private Runnable mTimer;
     double i = 0;
+
     private double graphLastXValue = 5d;
 
 
@@ -46,7 +47,7 @@ public class Tempview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tempview);
 
-        textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.textViewt);
         chart = (LineChart) findViewById(R.id.chart);
         mChart = new ChartHelper(chart);
         GraphView graph = (GraphView) findViewById(R.id.graph1);
@@ -76,7 +77,7 @@ public class Tempview extends AppCompatActivity {
             @Override
             public void run() {
                 graphLastXValue += 0.25d;
-                mSeries.appendData(new DataPoint(graphLastXValue, getRandom()), true, 22);
+                mSeries.appendData(new DataPoint(graphLastXValue, i), true, 22);
                 mHandler.postDelayed(this, 500);
             }
         };
@@ -91,8 +92,8 @@ public class Tempview extends AppCompatActivity {
 
     double mLastRandom = 2;
     Random mRand = new Random();
-    private double getRandom() {
-        return mLastRandom += mRand.nextDouble()*0.5 - 0.25;
+    private void getRandom(double i) {
+        this.i=i;
     }
 
 
@@ -129,13 +130,15 @@ public class Tempview extends AppCompatActivity {
             }
 
             public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
-//                Log.w("Debug1111", mqttMessage.toString());
-//                textView.setText(mqttMessage.toString());
+//                 Log.w("Debug1111", mqttMessage.toString());
+                textView.setText(mqttMessage.toString());
                 textView.setText(splitmsg(mqttMessage.toString()));
-                mChart.addEntry(Float.valueOf(mqttMessage.toString()));
-                Log.w("Split", splitmsg(mqttMessage.toString()));
+
+//                Log.w("Split", splitmsg(mqttMessage.toString()));
                 i= Double.parseDouble(splitmsg(mqttMessage.toString()));
-                Log.w("i", String.valueOf((i)));
+                Log.w("Split", String.valueOf(i));
+                getRandom(i);
+                mChart.addEntry(Float.valueOf(mqttMessage.toString()));
             }
 
 

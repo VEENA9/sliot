@@ -46,7 +46,7 @@ public class Ppgview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ppgview);
 
-        textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.textViewp);
         chart = (LineChart) findViewById(R.id.chart);
         mChart = new ChartHelper(chart);
         GraphView graph = (GraphView) findViewById(R.id.graph);
@@ -78,12 +78,12 @@ public class Ppgview extends AppCompatActivity {
                 if (graphLastXValue == 500) {
                     graphLastXValue = 0;
                     mSeries.resetData(new DataPoint[]{
-                            new DataPoint(graphLastXValue, getRandom())
+                            new DataPoint(graphLastXValue, i)
                     });
                 }
 
                 graphLastXValue += 1d;
-                mSeries.appendData(new DataPoint(graphLastXValue, getRandom()), false, 1000);
+                mSeries.appendData(new DataPoint(graphLastXValue, i), false, 1000);
                 mHandler.postDelayed(this, 5);
             }
 
@@ -98,8 +98,8 @@ public class Ppgview extends AppCompatActivity {
 
     double mLastRandom = 2;
 
-    private double getRandom() {
-      return 0;
+    private void getRandom(double i) {
+     this.i=i;
     }
 
 
@@ -136,12 +136,14 @@ public class Ppgview extends AppCompatActivity {
 
             public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
 //                Log.w("Debug1111", mqttMessage.toString());
-//                textView.setText(mqttMessage.toString());
+                textView.setText(mqttMessage.toString());
                 textView.setText(splitmsg(mqttMessage.toString()));
-                mChart.addEntry(Float.valueOf(mqttMessage.toString()));
-                Log.w("Split", splitmsg(mqttMessage.toString()));
+
+//                Log.w("Split", splitmsg(mqttMessage.toString()));
                 i= Double.parseDouble(splitmsg(mqttMessage.toString()));
-                Log.w("i", String.valueOf((i)));
+                Log.w("Split", String.valueOf(i));
+                getRandom(i);
+                mChart.addEntry(Float.valueOf(mqttMessage.toString()));
             }
 
 

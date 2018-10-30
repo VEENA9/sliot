@@ -1,0 +1,116 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    tools:context=".Wave">
+
+    <com.gelitenight.waveview.library.WaveView
+        android:id="@+id/wave"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="#28d3e8ed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp" />
+
+
+
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:max="50"
+        android:progress="10"/>
+
+    <TextView
+        android:id="@+id/border"
+        android:layout_width="60dp"
+        android:layout_height="32dp"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/shape" />
+
+    <TextView
+        android:id="@+id/shape"
+        android:layout_width="60dp"
+        android:layout_height="32dp"
+        android:gravity="center_vertical" />
+
+    <RadioGroup
+        android:id="@+id/shapeChoice"
+        android:layout_alignTop="@+id/shape"
+        android:layout_toRightOf="@id/shape"
+        android:layout_marginLeft="16dp"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/shapeCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/shapeSquare"
+            android:layout_marginLeft="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/color"
+        android:layout_width="60dp"
+        android:layout_height="32dp"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/border" />
+
+    <RadioGroup
+        android:id="@+id/colorChoice"
+        android:layout_below="@id/color"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/colorDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/colorRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp" />
+
+        <RadioButton
+            android:id="@+id/colorGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+           />
+
+        <RadioButton
+            android:id="@+id/colorBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+          />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="85dp"
+        android:layout_height="53dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="143dp"
+        android:layout_marginRight="143dp"
+        android:text="26"
+        android:background="#2829869E"
+        android:textAlignment="center"
+        android:textSize="25dp" />
+</RelativeLayout>

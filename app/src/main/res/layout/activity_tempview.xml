@@ -12,21 +12,28 @@
         android:id="@+id/chart"
         android:layout_width="1dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="6dp"
-        android:layout_marginRight="7dp" />
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        card_view:layout_constraintEnd_toStartOf="@+id/relativeLayout2"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="400dp"
-        android:layout_height="0dp"
+        android:layout_height="230dp"
         android:layout_margin="16dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="9dp"
         android:layout_marginEnd="3dp"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="32dp"
-        card_view:layout_constraintBottom_toTopOf="@+id/textView"
+        android:background="#f7e7e7"
+        card_view:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
         card_view:layout_constraintEnd_toEndOf="parent"
         card_view:layout_constraintStart_toStartOf="parent"
         card_view:layout_constraintTop_toTopOf="parent">
@@ -50,16 +57,120 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="184dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="183dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginRight="93dp"
-        android:text="Hello World!"
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="238dp"
+        android:background="#edf4f9"
         card_view:layout_constraintBottom_toBottomOf="parent"
-        card_view:layout_constraintEnd_toEndOf="@+id/relativeLayout"
-        card_view:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.0"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:context=".Wave">
+
+        <com.gelitenight.waveview.library.WaveView
+            android:id="@+id/wave"
+            android:layout_width="225dp"
+            android:layout_height="225dp"
+            android:layout_marginLeft="55dp"
+            android:layout_marginStart="55dp" />
+
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:max="50"
+            android:progress="10" />
+
+        <TextView
+            android:id="@+id/border"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/shape"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/shape"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:gravity="center_vertical" />
+
+        <RadioGroup
+            android:id="@+id/shapeChoice"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_alignTop="@+id/shape"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/shape"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/shapeCircle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/shapeSquare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/color"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/border"
+            android:gravity="center_vertical" />
+
+        <RadioGroup
+            android:id="@+id/colorChoice"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/color"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/colorDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/colorRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp" />
+
+            <RadioButton
+                android:id="@+id/colorGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp" />
+
+            <RadioButton
+                android:id="@+id/colorBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewt"
+            android:layout_width="85dp"
+            android:layout_height="53dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="77dp"
+            android:text="28"
+            android:textAlignment="center"
+            android:textColor="#8789e4"
+            android:textSize="35dp" />
+    </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>
